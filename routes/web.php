@@ -14,9 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/nuevoDocuemnto', function () {
-    return view('nuevoDocuemnto');
+    return view('index');
 });
