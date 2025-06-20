@@ -17,7 +17,7 @@ return new class extends Migration
         {
             $table->id('id_ctrl_gestion_ingreso_documento');
             $table->foreignId('id_origen_enviado'); // Relación con la tabla origen
-            $table->foreignId('id_origen_enviado_dependencia '); // Relación con la tabla origen
+            $table->foreignId('id_origen_enviado_dependencia'); // Relación con la tabla origen
             $table->boolean('id_estatus INT NOT NULL'); //Prendido si esta terminado, apagado si no esta terminado
             $table->DATE('fecha_recepcion');
             $table->DATE('fecha_oficio DATE');
@@ -27,6 +27,11 @@ return new class extends Migration
             $table->DATE('fecha_aprobacion DATE NOT NULL');
             $table->string('asunto TEXT NOT NULL');
         });
+         // Llaves foráneas sin eliminación en cascada
+            $table->foreign('id_origen_enviado')
+                  ->references('id_origen')->on('origen');
+            $table->foreign('id_origen_enviado_dependencia')
+                  ->references('id_origen')->on('origen');
     }
 
     /**
