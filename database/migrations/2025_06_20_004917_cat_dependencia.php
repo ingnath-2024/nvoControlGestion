@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        $table -> create('cat_dependencia', function (Blueprint $table) {
-            $table -> increments('id_cat_dependencia');
-            $table -> text('descripcion', 1000);
-        });
+        Schema::create('cat_dependencia', function (Blueprint $table) {
+            $table->increments('id_cat_dependencia');
+            $table->text('descripcion', 1000);
+            }); // Llave primaria autoincremental
     }
 
     /**
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('cat_dependencia');
     }
 };

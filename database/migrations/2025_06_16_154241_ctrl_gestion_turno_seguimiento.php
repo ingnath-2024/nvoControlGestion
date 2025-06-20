@@ -23,8 +23,7 @@ return new class extends Migration
             $table->timestamps(); // created_at y updated_at
 
             // Llaves foráneas sin eliminación en cascada
-            $table->foreign('id_cat_dependencia')
-                  ->references('id_cat_dependencia')->on('cat_dependencias');
+            $table->foreign('id_cat_dependencia')->references('id_cat_dependencia')->on('cat_dependencia');
                   
 
             $table->foreign('id_ctrl_gestion_ingreso_documento')
