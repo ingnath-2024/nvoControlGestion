@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('control_gestion', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::dropIfExists('origen');
+        Schema::create('origen', function (Blueprint $table) {
+        $table->integer('id_origen');
+        $table->text('descripcion', 1000);
+    });
     }
 
     /**
@@ -26,6 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('control_gestion');
+         Schema::dropIfExists('origen');
+
     }
 };

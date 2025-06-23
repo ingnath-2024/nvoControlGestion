@@ -22,15 +22,7 @@ return new class extends Migration
             $table->char('id_tipo_ingreso', 1);
             $table->timestamps(); // created_at y updated_at
 
-            // Llaves foráneas sin eliminación en cascada
-            $table->foreign('id_ctrl_gestion_ingreso_documento')
-                  ->references('id_ctrl_gestion_ingreso_documento')->on('ctrl_gestion_ingreso_documentos');
-
-            $table->foreign('id_ctrl_gestion_tt_seguimiento')
-                  ->references('id_ctrl_gestion_tt_seguimiento')->on('ctrl_gestion_tt_seguimiento');
-                 
-            $table->foreign('id_origen_enviado_dependencia')
-                  ->references('id_origen')->on('origen');
+           
                  
         });
 

@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('ctrl_gestion_ingreso_documentos');
         Schema::create('ctrl_gestion_ingreso_documentos', function (Blueprint $table) 
         {
             $table->id('id_ctrl_gestion_ingreso_documento');
@@ -27,11 +28,7 @@ return new class extends Migration
             $table->DATE('fecha_aprobacion DATE NOT NULL');
             $table->string('asunto TEXT NOT NULL');
         });
-         // Llaves foráneas sin eliminación en cascada
-            $table->foreign('id_origen_enviado')
-                  ->references('id_origen')->on('origen');
-            $table->foreign('id_origen_enviado_dependencia')
-                  ->references('id_origen')->on('origen');
+         
     }
 
     /**

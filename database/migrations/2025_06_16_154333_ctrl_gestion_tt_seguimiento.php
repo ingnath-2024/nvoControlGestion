@@ -29,19 +29,7 @@ return new class extends Migration
             $table->text('respuesta')->nullable();
             $table->timestamps(); // created_at y updated_at
 
-            // Llaves foráneas sin eliminación en cascada
-            $table->foreign('id_ctrl_gestion_turno_seguimiento')
-                  ->references('id_ctrl_gestion_turno_seguimiento')->on('ctrl_gestion_turno_seguimiento');
-                  
-
-            $table->foreign('id_ctrl_gestion_ingreso_documento')
-                  ->references('id_ctrl_gestion_ingreso_documento')->on('ctrl_gestion_ingreso_documentos');
-                  
-
-            $table->foreign('id_origen_respuesta_seguimiento')
-                  ->references('id_origen')->on('origen');
-            $table->foreign('id_cat_dependencia')
-                  ->references('id_cat_dependencia')->on('cat_dependencias');
+            
                   
         });
     }
