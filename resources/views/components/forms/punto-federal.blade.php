@@ -17,14 +17,14 @@
             <input type="date" id="punto_fecha_aprobacion" class="form-input">
         </div>
 
-        <div class="form-group form-group__50">
-            <label for="comision_congreso" class="form-label">Congreso que envía</label>
-            <select id="comision_congreso" class="form-input">
-                <option value="0">Seleccione un congreso</option>
-                <option value="1">Aguascalientes</option>
-                <option value="2">Sonora</option>
-                <option value="3">Zacatecas</option>
-            </select>
+        <div class="form-group">
+                <label for="comision_congreso" class="form-label">Congreso QUE envía</label>
+                <select id="comision_congreso" name="comision_congreso" class="form-input">
+                    <option value="">Seleccione un congreso</option>
+                    @foreach($congresos as $congreso)
+                        <option value="{{ $congreso->id }}">{{ $congreso->nombre }}</option>
+                    @endforeach
+                </select>
         </div>
 
         <div class="form-group form-group__50">

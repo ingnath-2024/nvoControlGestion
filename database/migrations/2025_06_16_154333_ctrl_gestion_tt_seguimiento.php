@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('ctrl_gestion_tt_seguimiento');
         Schema::create('ctrl_gestion_tt_seguimiento', function (Blueprint $table) {
             $table->id('id_ctrl_gestion_tt_seguimiento'); // Llave primaria autoincremental
             $table->unsignedBigInteger('id_ctrl_gestion_ingreso_documento');

@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $congresos = Congreso::all();
+    return view('index', compact('congresos'));
 });
+
 
 Route::get('/nuevoDocuemnto', function () {
     return view('nuevoDocuemnto');

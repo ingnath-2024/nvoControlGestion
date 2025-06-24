@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('cat_dependencia');
         Schema::create('cat_dependencia', function (Blueprint $table) {
             $table->increments('id_cat_dependencia');
             $table->text('descripcion', 1000);
