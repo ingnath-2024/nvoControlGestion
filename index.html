@@ -244,10 +244,9 @@
                 <div class="page-header">
                     <h1>
                         <i class="icon icon-book"></i> Control de Gestión
-                        Documental
                     </h1>
                     <p class="lead">
-                        Sistema para el registro y seguimiento de documentos
+                        Registro y seguimiento de Documentos
                         oficiales
                     </p>
                 </div>
@@ -330,57 +329,9 @@
                                                     class="form-label"
                                                     >Tipo de Documento</label
                                                 >
-                                                <select
-                                                    id="Asunto"
-                                                    class="form-control"
-                                                    onchange="showAdditionalFields(this.value)"
-                                                >
-                                                    <option value="0">
-                                                        Seleccione un documento
-                                                    </option>
-                                                    <option value="1">
-                                                        Puntos de acuerdo
-                                                        Locales
-                                                    </option>
-                                                    <option value="13">
-                                                        Puntos de acuerdo
-                                                        Federal
-                                                    </option>
-                                                    <option value="2">
-                                                        Decretos
-                                                    </option>
-                                                    <option value="3">
-                                                        Acuses
-                                                    </option>
-                                                    <option value="4">
-                                                        Nombramientos y
-                                                        Ratificaciones
-                                                    </option>
-                                                    <option value="5">
-                                                        Publicaciones DOF
-                                                    </option>
-                                                    <option value="6">
-                                                        Comparecencias
-                                                    </option>
-                                                    <option value="7">
-                                                        Comunicaciones (art. 27)
-                                                    </option>
-                                                    <option value="8">
-                                                        Iniciativas de Ley
-                                                    </option>
-                                                    <option value="9">
-                                                        Salidas del Presidente
-                                                    </option>
-                                                    <option value="10">
-                                                        Convenios y Tratados
-                                                        Internacionales
-                                                    </option>
-                                                    <option value="11">
-                                                        Salidas de Tropas
-                                                    </option>
-                                                    <option value="12">
-                                                        Respuestas por la libre
-                                                    </option>
+                                                <select id="Asunto" class="form-control" onchange="showAdditionalFields(this.value)">
+                                                    <option value="0">Seleccione un documento</option>
+                                                    <option value="1">Recepción de Documentos</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -390,7 +341,7 @@
                                                     for="fecha_aprobacion"
                                                     id="etiqueta_Fecha_ingreso"
                                                     class="form-label"
-                                                    >Fecha de Ingreso:</label
+                                                    >Fecha de Recepción:</label
                                                 >
                                                 <input
                                                     type="date"
@@ -401,26 +352,26 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label
-                                            for="ASUNTO_Principal"
-                                            class="form-label"
-                                            >Asunto</label
-                                        >
-                                        <textarea
-                                            class="form-control"
-                                            id="ASUNTO_Principal"
-                                            rows="3"
-                                            placeholder="Acuerdo legislativo 043..."
-                                        ></textarea>
-                                    </div>
+                                    
 
                                     <!-- Campos dinámicos mejorados -->
                                     <div
                                         id="dynamicFieldsContainer"
                                         class="dynamic-fields hidden fade-in"
                                     >
-                                        <!-- Aquí se insertarán los campos adicionales -->
+                                        <div class="form-group">
+                                            <label for="estatus" id="etiqueta_estatus" class="form-label">Estatus:</label>
+                                            <select id="estatus" class="form-control">
+                                                <option value="0">Seleccione un estatus</option>
+                                                <option value="1">En proceso</option>
+                                                <option value="2">Aceptado</option>
+                                                <option value="3">Rechazado</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Destinatario" class="form-label">Destinatario</label>
+                                            <input type="text" class="form-control" id="Destinatario" placeholder="Unidad de Enlace">
+                                        </div>
                                     </div>
 
                                     <div
@@ -503,8 +454,7 @@
                                             <tr>
                                                 <td>001</td>
                                                 <td>
-                                                    Punto de acuerdo sobre
-                                                    educación
+                                                    Documentos que ingresa
                                                 </td>
                                                 <td>
                                                     Congreso de Aguascalientes
@@ -575,28 +525,7 @@
                 margin-top: 2rem;
             "
         >
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p style="margin-bottom: 0.5rem">
-                            <strong
-                                >Sistema de Control de Gestión
-                                Documental</strong
-                            >
-                        </p>
-                        <p style="color: #6c757d; font-size: 0.9rem">
-                            Versión 1.0.0
-                        </p>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <img
-                            src="https://framework-gb.cdn.gob.mx/assets/images/gobmxlogo-escudo.svg"
-                            alt="Gobierno de México"
-                            style="height: 40px"
-                        />
-                    </div>
-                </div>
-            </div>
+            
         </footer>
 
         <!-- Scripts requeridos -->
@@ -612,9 +541,7 @@
         <script>
             // Función para mostrar campos adicionales según el tipo de documento
             function showAdditionalFields(documentType) {
-                const container = document.getElementById(
-                    "dynamicFieldsContainer",
-                );
+                const container = document.getElementById("dynamicFieldsContainer");
                 container.innerHTML = "";
                 container.classList.add("hidden");
 
@@ -625,462 +552,205 @@
 
                 // Agregar campos según el tipo de documento seleccionado
                 switch (documentType) {
-                    case "0": // Seleccione un documento
-                        const formularioDeDatosGenerales_0 =
-                            document.querySelector("#Congreso_origen_local");
-                        formularioDeDatosGenerales_0.style.display = "none";
-                        break;
-                    case "1": // Puntos de acuerdo Locales
-                        const formularioDeDatosGenerales_1 =
-                            document.querySelector("#Congreso_origen_local");
-                        formularioDeDatosGenerales_1.style.display = "block";
+                    case "1": // Recepción de Documentos
                         container.innerHTML = `
-                        <h4><i class="fa fa-file-text-o"></i> Campos específicos para Puntos de Acuerdo</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="punto_numero" class="form-label">Número de Punto</label>
-                                    <input type="text" class="form-control" id="punto_numero" placeholder="Número del punto de acuerdo">
-                                </div>
+                            <h4><i class="fa fa-file-text-o"></i> Recepción de Documentos</h4>
+                            <div class="form-group">
+                                <label for="estatus" class="form-label">Estatus:</label>
+                                <select id="estatus" class="form-control">
+                                    <option value="0">Seleccione un estatus</option>
+                                    <option value="1">En proceso</option>
+                                    <option value="2">Aceptado</option>
+                                    <option value="3">Rechazado</option>
+                                    <option value="4">Pendiente</option>
+                                </select>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="punto_fecha" class="form-label">Fecha del Ingreso del Punto</label>
-                                    <input type="date" class="form-control" id="punto_fecha">
-                                </div>
+                            <div class="form-group">
+                                <label for="Destinatario" class="form-label">Destinatario</label>
+                                <input type="text" class="form-control" id="Destinatario" placeholder="Unidad de Enlace">
                             </div>
-                        </div>
-
                         <div class="form-group">
-                            <label for="enviado_a_local" class="form-label">Enviado a:</label>
-                            <input type="text" class="form-control" id="enviado_a_local" placeholder="Secretaría de Gobernación">
-                        </div>
+                                <label for="Remitente" class="form-label">Remitente</label>
+                                <input type="text" class="form-control" id="Remitente" placeholder="MODULO DE ATENCIÓN CIUDADANA">
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo" class="form-label">Cargo:</label>
+                                <select id="cargo" class="form-control">
+                                    <option value="0">Seleccione un Cargo</option>
+                                    <option value="1">SECRETARIA TÉCNICA</option>
+                                    <option value="2">DIRECTOR GENERAL DE PROCEDIMIENTOS CONSTITUCIONALES DE LA SEGOB/option>
+                                    <option value="3">DIRECTOR GENERAL DE COORDINACIÓN POLÍTICA</option>
+                                    <option value="4">No Aplica</option>
+                                </select>
+                            </div>
+                           <div class="form-group">
+                                <label for="dependencia" class="form-label">Dependencia:</label>
+                                <select id="dependencia" class="form-control">
+                                    <option value="0">Seleccione una Dependencia</option>
+                                    @foreach ($dependencias as $dependencia)
+                                        <option value="{{ $dependencia->id }}">{{ $dependencia->nombre }}</option>
+                                    @endforeach
+                                </select>
 
-                        <div class="form-group">
-                            <label for="Punto_Acuerdo" class="form-label">Contenido del Punto de Acuerdo</label>
-                            <textarea class="form-control" id="Punto_Acuerdo" rows="4" placeholder="Acuerdo legislativo 043, mediante el cual se exhorta a la Presidenta a que emita un decreto por el que establezca facilidades administrativas para la renovación de títulos de concesiones de aguas nacionales otorgados para uso agrícola y pecuario."></textarea>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="Oficio_Turnado" class="form-label">No. Oficio Turnado</label>
-                                    <input type="text" class="form-control" id="Oficio_Turnado" placeholder="Número Oficio Turnado">
-                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fecha_turno" class="form-label">Fecha de Turno</label>
-                                    <input type="date" class="form-control" id="fecha_turno">
-                                </div>
+                            <div class="form-group">
+                                <label for="oficio" class="form-label">Oficio:</label>
+                                <input type="text" class="form-control" id="oficio" placeholder="SG/UE/CA/230/485/24">
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="liga_dof" class="form-label">Liga de Documento</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="liga_dof" placeholder="//10.2.22.153/doc/2023/01/02/001.pdf">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                                        </span>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="liga" class="form-label">Liga:</label>
+                                <input type="text" class="form-control" id="liga_de_recepcion" placeholder="ip:91.200.16.123/recepcion/2023/01/02/001.pdf">
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="decreto_dof" class="form-label">Carga de Documento</label>
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                        Seleccionar archivo... <input type="file" id="decreto_dof">
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
+                            <div class="form-group">
+                                <label for="fecha_oficio" class="form-label">Fecha de Oficio:</label>
+                                <input type="date" class="form-control" id="fecha_oficio" placeholder="dd/mm/aaaa">
                             </div>
-                        </div>
-                    `;
+                            <div class="form-group">
+                                <label for="tema" class="form-label">Tema:</label>
+                                <select id="tema" class="form-control">
+                                    <option value="0">Seleccione un Tema</option>
+                                    <option value="1">PETICIÓN CIUDADANA</option>
+                                    <option value="2">ADMINISTRATIVO / COPIA DE CONOCIMIENTO</option>
+                                    <option value="3">DIRECTOR GENERAL DE COORDINACIÓN POLÍTICA</option>
+                                    <option value="4">ADMINISTRATIVO</option>
+                                    <option value="5">SOLICITUD DE INFORMACIÓN  (AMPARO)</option>
+                                    <option value="6">CURRICULUM</option>
+                                    <option value="7">ENLACE LEGISLATIVO</option>
+                                    <option value="8">No Aplica</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                        <label
+                                            for="ASUNTO_Principal"
+                                            class="form-label"
+                                            >Asunto</label
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="ASUNTO_Principal"
+                                            rows="3"
+                                            placeholder="Acuerdo legislativo 043..."
+                                        ></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="Turnado" class="form-label">Turnado:</label>
+                                <select id="Turnado" class="form-control">
+                                    <option value="0">Seleccione un persona para turnar</option>
+                                    <option value="1">DRA. NADIA CAROLINA RANGEL</option>
+                                    <option value="2">LIC. AMANDA SOLÍS</option>
+                                    <option value="3">MTRO. MANUEL VARELA</option>
+                                    <option value="4">No Aplica</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                        <label
+                                            for="Observaciones"
+                                            class="form-label"
+                                            >Observaciones</label
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="Observaciones"
+                                            rows="3"
+                                            placeholder="Observaciones..."
+                                        ></textarea>
+                            </div>
+                            <div class="form-group">
+                                        <label
+                                            for="Seguimiento"
+                                            class="form-label"
+                                            >Seguimiento</label
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="Seguimiento"
+                                            rows="3"
+                                            placeholder="Seguimiento..."
+                                        ></textarea>
+                            </div>
+                            <div class="form-group">
+                                        <label
+                                            for="Instrucción
+                                            class="form-label"
+                                            >Intrucción</label  
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="instruccion"
+                                            rows="3"
+                                            placeholder="instruccion..."
+                                        ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="oficio_respuesta" class="form-label">OFICIO DE RESPUESTA:</label>
+                                <input type="text" class="panel-title" id="oficio_respuesta" placeholder="SG/UE/230/1865/24">
+                            </div>
+                            <div class="card-header">
+                                <h3
+                                    class="panel-title"
+                                    style="color: white; margin: 0"
+                                >
+                                    <i class="icon icon-plus"></i> Respuesta al documento
+                                </h3>
+                            </div>
+                            <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label
+                                                    for="Num_Respuesta"
+                                                    class="form-label"
+                                                    ># Respuesta</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="num_respuesta"
+                                                    value="1"
+                                                    readonly
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label
+                                                    for="folio"
+                                                    class="form-label"
+                                                    >Folio</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="folio"
+                                                    value="560"
+                                                    readonly
+                                                />
+                                            </div>
+                                        </div>
+                                                 for="respuesta"
+                                                    class="form-label"
+                                                    >Respuesta</label
+                                                    class="form-label"></label
+                                                >
+                                                <textarea
+                                                    class="form-control"
+                                                    id="respuesta"
+                                                    rows="3"
+                                                    placeholder="Respuesta..."
+                                                ></textarea>
+                                            </div>
+                                        </div>
+                                        `
+                            
+                        ;
                         break;
-
-                    case "13": // Puntos de acuerdo Federal
-                        const formularioDeDatosGenerales_13 =
-                            document.querySelector("#Congreso_origen_local");
-                        formularioDeDatosGenerales_13.style.display = "none";
-                        container.innerHTML = `
-                        <h4><i class="fa fa-file-text-o"></i> Campos específicos para Puntos de Acuerdo Federal</h4>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="punto_numero" class="form-label">Número de Punto</label>
-                                    <input type="text" class="form-control" id="punto_numero" placeholder="Número del punto de acuerdo">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="punto_fecha" class="form-label">Fecha de Ingreso</label>
-                                    <input type="date" class="form-control" id="punto_fecha">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="punto_fecha_aprobacion" class="form-label">Fecha de Aprobación</label>
-                                    <input type="date" class="form-control" id="punto_fecha_aprobacion">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="comision" class="form-label">Congreso que envía</label>
-                                    <select id="comision" class="form-control">
-                                        <option value="0">Seleccione un congreso</option>
-                                        <option value="1">Aguascalientes</option>
-                                        <option value="2">Sonora</option>
-                                        <option value="3">Zacatecas</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="comision" class="form-label">Comisión</label>
-                                    <select id="comision" class="form-control">
-                                        <option value="0">Seleccione una comisión</option>
-                                        <option value="1">Senado</option>
-                                        <option value="2">Diputado</option>
-                                        <option value="3">Permanente</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Punto_Acuerdo" class="form-label">Contenido del Punto de Acuerdo</label>
-                            <textarea class="form-control" id="Punto_Acuerdo" rows="4" placeholder="Descripción del punto de acuerdo..."></textarea>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="Turnado" class="form-label">No. Oficio Turnado</label>
-                                    <input type="text" class="form-control" id="Turnado" placeholder="Número Oficio Turnado">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="decreto_dof" class="form-label">Liga de Documento</label>
-                                    <input type="text" class="form-control" id="decreto_dof" placeholder="//10.2.22.153/doc/2023/01/02/001.pdf">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fecha_turnado" class="form-label">Fecha de turnado</label>
-                                    <input type="date" class="form-control" id="fecha_turnado">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="comision" class="form-label">Turnado a:</label>
-                                    <select id="comision" class="form-control">
-                                        <option value="0">Selecciona turnado</option>
-                                        <option value="1">Senado</option>
-                                        <option value="2">Diputado</option>
-                                        <option value="3">Permanente</option>
-                                        <option value="4">Aguascalientes</option>
-                                        <option value="5">Sonora</option>
-                                        <option value="6">Zacatecas</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="fecha_rsp_apf" class="form-label">Respuesta APF</label>
-                                    <input type="date" class="form-control" id="fecha_rsp_apf">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="depenencia_respuesta_APF" class="form-label">Dependencia Respuesta:</label>
-                            <select id="depenencia_respuesta_APF" class="form-control">
-                                <option value="0">Selecciona Dependencia</option>
-                                <option value="1">Senado</option>
-                                <option value="2">Diputado</option>
-                                <option value="3">Permanente</option>
-                                <option value="4">Aguascalientes</option>
-                                <option value="5">Sonora</option>
-                                <option value="6">Zacatecas</option>
-                            </select>
-                        </div>
-                    `;
-                        break;
-
-                    case "2": // Decretos
-                        const formularioDeDatosGenerales_2 =
-                            document.querySelector("#Congreso_origen_local");
-                        formularioDeDatosGenerales_2.style.display = "none";
-                        container.innerHTML = `
-                        <h4><i class="fa fa-gavel"></i> Campos específicos para Decretos</h4>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="decreto_numero" class="form-label">Número de Decreto</label>
-                                    <input type="text" class="form-control" id="decreto_numero" placeholder="Número del decreto">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="decreto_fecha" class="form-label">Fecha de Publicación</label>
-                                    <input type="date" class="form-control" id="decreto_fecha">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="decreto_dof" class="form-label">Publicación en DOF</label>
-                                    <input type="text" class="form-control" id="decreto_dof" placeholder="Referencia DOF">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="liga_doc" class="form-label">Liga de Documento</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="decreto_dof" placeholder="//10.2.22.153/doc/2023/01/02/001.pdf">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                        break;
-
-                    case "4": // Nombramientos y Ratificaciones
-                        const formularioDeDatosGenerales_4 =
-                            document.querySelector("#Congreso_origen_local");
-                        formularioDeDatosGenerales_4.style.display = "block";
-                        container.innerHTML = `
-                        <h4><i class="fa fa-id-card-o"></i> Campos específicos para Nombramientos y Ratificaciones</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nombramiento_numero" class="form-label">Número de Nombramiento</label>
-                                    <input type="text" class="form-control" id="nombramiento_numero" placeholder="Número del nombramiento">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nombramiento_fecha" class="form-label">Fecha de Publicación</label>
-                                    <input type="date" class="form-control" id="nombramiento_fecha">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="comision" class="form-label">Comisión</label>
-                            <select id="comision" class="form-control">
-                                <option value="0">Seleccione una comisión</option>
-                                <option value="1">Senado</option>
-                                <option value="2">Diputado</option>
-                                <option value="3">Permanente</option>
-                            </select>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="Turnado" class="form-label">No. Oficio Turnado</label>
-                                    <input type="text" class="form-control" id="Turnado" placeholder="Número Oficio Turnado">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="decreto_dof" class="form-label">Liga de Documento</label>
-                                    <input type="text" class="form-control" id="decreto_dof" placeholder="//10.2.22.153/doc/2023/01/02/001.pdf">
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                        break;
-
-                    case "5": // Publicaciones DOF
-                        container.innerHTML = `
-                        <h4><i class="fa fa-newspaper-o"></i> Campos específicos para Publicaciones DOF</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="publicacion_dof_numero" class="form-label">Número de Publicación</label>
-                                    <input type="text" class="form-control" id="publicacion_dof_numero" placeholder="Número de publicación">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="publicacion_dof_fecha" class="form-label">Fecha de Publicación</label>
-                                    <input type="date" class="form-control" id="publicacion_dof_fecha">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="publicacion_dof_liga" class="form-label">Liga de Documento</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="publicacion_dof_liga" placeholder="//10.2.22.153/doc/2023/01/02/001.pdf">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                        break;
-
-                    case "6": // Comparecencias
-                        container.innerHTML = `
-                        <h4><i class="fa fa-users"></i> Campos específicos para Comparecencias</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="comparecencia_numero" class="form-label">Número de Comparecencia</label>
-                                    <input type="text" class="form-control" id="comparecencia_numero" placeholder="Número de comparecencia">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="comparecencia_fecha" class="form-label">Fecha de Publicación</label>
-                                    <input type="date" class="form-control" id="comparecencia_fecha">
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                        break;
-
-                    case "7": // Comunicaciones (art. 27)
-                        container.innerHTML = `
-                        <h4><i class="fa fa-envelope-o"></i> Campos específicos para Comunicaciones</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="comunicacion_numero" class="form-label">Número de Comunicación</label>
-                                    <input type="text" class="form-control" id="comunicacion_numero" placeholder="Número de comunicación">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="comunicacion_fecha" class="form-label">Fecha de Publicación</label>
-                                    <input type="date" class="form-control" id="comunicacion_fecha">
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                        break;
-
-                    case "8": // Iniciativas de Ley
-                        container.innerHTML = `
-                        <h4><i class="fa fa-balance-scale"></i> Campos específicos para Iniciativas de Ley</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="iniciativa_numero" class="form-label">Número de Iniciativa</label>
-                                    <input type="text" class="form-control" id="iniciativa_numero" placeholder="Número de iniciativa">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="iniciativa_tipo" class="form-label">Tipo de Iniciativa</label>
-                                    <select class="form-control" id="iniciativa_tipo">
-                                        <option value="">Seleccione tipo</option>
-                                        <option value="reforma">Reforma</option>
-                                        <option value="adicion">Adición</option>
-                                        <option value="derogacion">Derogación</option>
-                                        <option value="nueva">Nueva Ley</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="iniciativa_ley" class="form-label">Ley que modifica</label>
-                            <input type="text" class="form-control" id="iniciativa_ley" placeholder="Nombre de la ley">
-                        </div>
-                    `;
-                        break;
-
-                    case "9": // Salidas del Presidente
-                        container.innerHTML = `
-                        <h4><i class="fa fa-plane"></i> Campos específicos para Salidas del Presidente</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="salida_numero" class="form-label">Número de Salida</label>
-                                    <input type="text" class="form-control" id="salida_numero" placeholder="Número de salida">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="salida_fecha" class="form-label">Fecha de Publicación</label>
-                                    <input type="date" class="form-control" id="salida_fecha">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="salida_liga" class="form-label">Liga de Documento</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="salida_liga" placeholder="//10.2.22.153/doc/2023/01/02/001.pdf">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                        break;
-
-                    case "10": // Convenios y Tratados Internacionales
-                        container.innerHTML = `
-                        <h4><i class="fa fa-handshake-o"></i> Campos específicos para Convenios y Tratados</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="convenio_nombre" class="form-label">Nombre del Convenio</label>
-                                    <input type="text" class="form-control" id="convenio_nombre" placeholder="Nombre completo del convenio">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="convenio_pais" class="form-label">País</label>
-                                    <input type="text" class="form-control" id="convenio_pais" placeholder="País con el que se firma">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="convenio_fecha" class="form-label">Fecha de Firma</label>
-                                    <input type="date" class="form-control" id="convenio_fecha">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="convenio_aprobacion" class="form-label">Aprobación del Senado</label>
-                                    <select class="form-control" id="convenio_aprobacion">
-                                        <option value="pendiente">Pendiente</option>
-                                        <option value="aprobado">Aprobado</option>
-                                        <option value="rechazado">Rechazado</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                        break;
-
+                        
                     default:
-                        // Para otros tipos de documentos que no requieren campos especiales
                         container.innerHTML = `
-                        <div class="alert alert-info">
-                            <i class="fa fa-info-circle"></i> No se requieren campos adicionales para este tipo de documento.
-                        </div>
-                    `;
+                            <div class="alert alert-info">
+                                <i class="fa fa-info-circle"></i> No se requieren campos adicionales para este tipo de documento.
+                            </div>
+                        `;
                 }
             }
 

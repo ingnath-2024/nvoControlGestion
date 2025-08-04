@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('cat_dependencia');
-        Schema::create('cat_dependencia', function (Blueprint $table) {
-            $table->integer('id_cat_dependencia');
-            $table->text('descripcion', 1000);
-            }); // Llave primaria autoincremental
+        Schema::create('Destinatario', function (Blueprint $table) {
+            $table->integer('id_cat_destinatario');
+            $table->text('nombre', 100);
+        });
     }
 
     /**
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_dependencia');
+        Schema::dropIfExists('Destinatario');
     }
 };
